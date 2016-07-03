@@ -8,9 +8,11 @@ namespace PetPallApi.Models
     public class OwnerRepository : IOwnerRepository
     {
         PetPallApiContext Context { get; set; }
-        public OwnerRepository()
+        IDbContextFactory DbContextFactory;
+        public OwnerRepository(IDbContextFactory DbContextFactory)
         {
-            this.Context = new PetPallApiContext();
+            this.DbContextFactory = DbContextFactory;
+            this.Context = DbContextFactory.GetPetPallApiContext();
         }
 
         public PetOwner GetPetOwner(int id)

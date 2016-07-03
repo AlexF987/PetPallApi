@@ -9,9 +9,11 @@ namespace PetPallApi.Models
     public class PetRepository : IPetRepository
     {
         PetPallApiContext Context { get; set; }
-        public PetRepository()
+        IDbContextFactory DbContextFactory;
+        public PetRepository(IDbContextFactory DbContextFactory)
         {
-            this.Context = new PetPallApiContext();
+            this.DbContextFactory = DbContextFactory;
+            this.Context = DbContextFactory.GetPetPallApiContext();
         }
 
         public IQueryable<Pet> GetPets()

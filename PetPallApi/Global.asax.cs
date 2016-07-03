@@ -23,6 +23,7 @@ namespace PetPallApi
 
             container.Register<IOwnerRepository, OwnerRepository>(Lifestyle.Scoped);
             container.Register<IPetRepository, PetRepository>(Lifestyle.Scoped);
+            container.Register<IDbContextFactory, DBContextFactory>(Lifestyle.Singleton);
 
 
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);

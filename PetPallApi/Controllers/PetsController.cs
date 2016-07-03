@@ -19,14 +19,12 @@ namespace PetPallApi.Controllers
         private IPetRepository PetRepository;
 
         private IOwnerRepository OwnerRepository;
-
-        private PetValidator Validator;
+        
 
         public PetsController(IPetRepository PetRepository, IOwnerRepository OwnerRepository)
         {
             this.PetRepository = PetRepository;
             this.OwnerRepository = OwnerRepository;
-            Validator = new PetValidator();
         }
 
         // GET: api/Pets
@@ -99,7 +97,7 @@ namespace PetPallApi.Controllers
         [ResponseType(typeof(Pet))]
         public IHttpActionResult PostPet(Pet pet)
         {
-            if (!ModelState.IsValid || !Validator.Validate(pet).IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }

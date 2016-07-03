@@ -21,6 +21,7 @@ namespace PetPallApi.App_Start
 
             container.Register<IOwnerRepository, OwnerRepository>(Lifestyle.Scoped);
             container.Register<IPetRepository, PetRepository>(Lifestyle.Scoped);
+            container.Register<IDbContextFactory, DBContextFactory>(Lifestyle.Singleton);
 
             container.Verify();
             
